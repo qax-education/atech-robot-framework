@@ -1,6 +1,7 @@
 from pymongo import MongoClient
+import ssl
 
-client = MongoClient('mongodb+srv://qax:xperience@cluster0.tffebyx.mongodb.net/?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://qax:xperience@cluster0.tffebyx.mongodb.net/?retryWrites=true&w=majority', ssl_cert_reqs=ssl.CERT_NONE)
 
 db = client['markdb']
 
