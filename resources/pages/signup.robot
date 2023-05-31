@@ -17,10 +17,10 @@ Register user
 
     Click           css=button[type=submit] >> text=Cadastrar
 
-Notice should be
-    [Arguments]     ${message}
+Alert should be
+    [Arguments]        ${text}
 
-    ${notice}       Set Variable        css=.notice p
+    ${element}        Set Variable        css=.alert-error
 
-    Wait For Elements State        ${notice}    visible    5
-    Get Text        ${notice}        equal      ${message}  
+    Wait For Elements State    ${element}        visible        5
+    Get Text                   ${element}        equal          ${text}
