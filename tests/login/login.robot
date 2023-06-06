@@ -3,6 +3,8 @@ Documentation        Cenários de testes do login
 
 Resource        ${EXECDIR}/resources/base.robot
 
+Library       JSONLibrary
+
 *** Test Cases ***
 Deve poder logar com sucesso
     [Tags]     smoke
