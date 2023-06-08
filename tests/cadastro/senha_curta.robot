@@ -1,7 +1,8 @@
 *** Settings ***
 Documentation        Tentativa de cadastro com senha muito curta
-Resource             ${EXECDIR}/resources/base.robot
+Resource             ../../resources/base.robot
 Test Template        Short password
+Test Teardown        Finish Session
 
 *** Test Cases ***
 Não deve logar com 1 chars         a

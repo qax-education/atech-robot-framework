@@ -10,6 +10,17 @@
             "tags": ["nubank", "inter", "ourocard"]
         }
     },
+    "duplicate": {
+        "user": {
+            "name": "Tony Stark",
+            "email": "tony@stark.com",
+            "password": "pwd123"
+        },
+        "task": {
+            "name": "Atualizar o jarvis",
+            "tags": ["jarvis", "ia"]
+        }
+    },
     "remove": {
         "user": {
             "name": "Xuxa Meneghel",
@@ -19,6 +30,17 @@
         "task": {
             "name": "Roteiro do programa infantil",
             "tags": ["tvglobinho"]
+        }
+    },
+    "done": {
+        "user": {
+            "name": "Bruce Wayne",
+            "email": "bruce@wayne.com",
+            "password": "pwd123"
+        },
+        "task": {
+            "name": "Construir o batmovel",
+            "tags": ["batman"]
         }
     }
 }

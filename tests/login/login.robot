@@ -1,9 +1,9 @@
 *** Settings ***
 Documentation        Cenários de testes do login
 
-Resource        ${EXECDIR}/resources/base.robot
+Resource        ../../resources/base.robot
 
-Library       JSONLibrary
+Test Teardown        Finish Session
 
 *** Test Cases ***
 Deve poder logar com sucesso

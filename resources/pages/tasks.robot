@@ -41,3 +41,20 @@ Remove task
     [Arguments]        ${task_name}
     
     Click        xpath=//strong[text()="${task_name}"]/..//button[@class="task-remove"]
+
+Task done
+    [Arguments]        ${task_name}
+    
+    Click        xpath=//strong[text()="${task_name}"]/..//button[@class="item-toggle"]
+
+Task should be done
+    [Arguments]        ${task_name}
+
+    Wait For Elements State        //strong[text()="${task_name}"]/..//button[@class="item-toggle-selected"]
+    ...        visible        5
+
+    Get Style    css=.task-done >> text=${task_name}
+    ...    text-decoration-line
+    ...    equal
+    ...    line-through
+

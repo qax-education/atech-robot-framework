@@ -5,6 +5,7 @@ Library            Browser
 Library            libs/mongo.py
 
 Resource           helpers.robot
+Resource           services.robot
 
 Resource           pages/components/nav.robot
 Resource           pages/components/notice.robot
@@ -17,6 +18,9 @@ Resource           pages/tasks.robot
 Start Session
     New Browser        browser=chromium    headless=False
     New Page           http://localhost:3000
+
+Finish Session
+    Take Screenshot
 
 Login Session
     [Arguments]        ${user}

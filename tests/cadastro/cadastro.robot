@@ -1,6 +1,8 @@
 *** Settings ****
 
-Resource    ${EXECDIR}/resources/base.robot
+Resource    ../../resources/base.robot
+
+Test Teardown        Finish Session
 
 *** Test Cases ***
 Deve cadastrar um novo usuário
