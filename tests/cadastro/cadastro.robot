@@ -1,6 +1,6 @@
 *** Settings ****
 
-Resource    ../../resources/base.robot
+Resource    ../../resources/base.resource
 
 Test Teardown        Finish Session
 
@@ -72,3 +72,24 @@ Senha deve ser obrigatória
     Go to signup
     Register user        ${user}
     Alert should be      Informe uma senha com pelo menos 6 digitos
+
+Senha muito curta
+    [Tags]    short_pass
+
+    Start Session
+
+    @{passwords}        Create List
+    ...        a    ab    abc    abcd    abcd1    1    12    123    1234    12345
+    
+    FOR    ${pass}    IN    @{passwords}
+
+        &{user}         Create Dictionary
+        ...    name=Steve Jobs
+        ...    email=jobs@apple.com
+        ...    password=${pass}
+
+        Go to signup
+        Register user        ${user}
+        Alert should be      Informe uma senha com pelo menos 6 digitos
+                
+    END

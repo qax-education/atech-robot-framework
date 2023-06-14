@@ -1,9 +1,10 @@
 *** Settings ***
 Documentation        Cenários de testes do login
 
-Resource        ../../resources/base.robot
+Resource        ../../resources/base.resource
 
 Test Teardown        Finish Session
+Library    Collections
 
 *** Test Cases ***
 Deve poder logar com sucesso
@@ -22,20 +23,19 @@ Deve poder logar com sucesso
     User should be logged in    ${user}[name]
 
 Não deve logar com senha incorreta
+    [Tags]    inv_pass
 
-    ${user1}    Create Dictionary
+    ${user}    Create Dictionary
     ...        name=Steve Rogers
     ...        email=steve@marvel.com
     ...        password=pwd123
 
-    Create new user    ${user1}
-
-    ${user2}    Create Dictionary
-    ...        name=Steve Rogers
-    ...        email=steve@marvel.com
-    ...        password=abc123
+    Create new user    ${user}
 
     Start Session
     Go to login page
-    Submit login form           ${user2}
+    
+    Set To Dictionary       ${user}       password=123456
+
+    Submit login form           ${user}
     Notice should be            Ocorreu um erro ao fazer login, verifique suas credenciais.

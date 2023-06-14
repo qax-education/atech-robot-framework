@@ -1,21 +1,32 @@
 *** Settings ***
 Documentation        Testes de cadastro de tarefas
 
-Resource       ../../resources/base.robot
+Resource       ../../resources/base.resource
 
 Test Teardown        Finish Session
+Library    Collections
 
 *** Test Cases ***
 Deve poder cadastrar uma nova tarefa
-    
+    [Tags]    smoke
+
     ${data}        Get fixture    tasks    create
 
     Create new user    ${data}[user]
     Login Session      ${data}[user]
 
+    Purge amqp queue
+
     Go to task form
     Submit task form                 ${data}[task]
     Task should be registered        ${data}[task][name]
+
+    ${result}        Get amqp message
+
+    Log        ${result}[payload]
+
+    Should Contain        ${result}[payload]        ${data}[user][email]
+    Should Contain        ${result}[payload]        ${data}[task][name]
 
 Não deve cadastrar tarefa com nome duplicado
     

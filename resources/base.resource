@@ -4,20 +4,22 @@ Documentation        Tudo começa aqui
 Library            Browser
 Library            libs/mongo.py
 
-Resource           helpers.robot
-Resource           services.robot
+Resource           env.resource
+Resource           helpers.resource
+Resource           services.resource
+Resource           amqp.resource
 
-Resource           pages/components/nav.robot
-Resource           pages/components/notice.robot
+Resource           pages/components/nav.resource
+Resource           pages/components/notice.resource
 
-Resource           pages/signup.robot
-Resource           pages/login.robot
-Resource           pages/tasks.robot
+Resource           pages/signup.resource
+Resource           pages/login.resource
+Resource           pages/tasks.resource
 
 *** Keywords ***
 Start Session
     New Browser        browser=chromium    headless=False
-    New Page           http://localhost:3000
+    New Page           ${BASE_URL}
 
 Finish Session
     Take Screenshot

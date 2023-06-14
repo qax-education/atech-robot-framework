@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation        Tentativa de cadastro com senha muito curta
-Resource             ../../resources/base.robot
+Resource             ../../resources/base.resource
 Test Template        Short password
 Test Teardown        Finish Session
 

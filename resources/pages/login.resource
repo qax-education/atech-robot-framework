@@ -1,12 +1,14 @@
 *** Settings ***
 Documentation            Página de login
 
+Resource    ../env.resource
+
 Library    Browser
 
 *** Keywords ***
 Go to login page
 
-    Go To        http://localhost:3000
+    Go To        ${BASE_URL}
 
     Wait For Elements State        h1          visible        5
     Get Text        css=h1        equal        Faça seu login

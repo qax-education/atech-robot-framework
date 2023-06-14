@@ -1,6 +1,8 @@
 *** Settings ***
 Documentation            Camada que consome a API da aplicação
 
+Resource       env.resource
+
 Library        RequestsLibrary
 
 *** Keywords ***
@@ -11,7 +13,7 @@ POST user session
     ...                email=${user}[email]
     ...                password=${user}[password]
 
-    ${response}        POST        http://localhost:3333/sessions
+    ${response}        POST        ${BASE_API}/sessions
     ...         json=${payload}
     ...         expected_status=200
     
@@ -26,7 +28,7 @@ POST user session
 POST new task
     [Arguments]        ${payload}
 
-    POST        http://localhost:3333/tasks
+    POST        ${BASE_API}/tasks
     ...         json=${payload}
     ...         headers=${headers}
     ...         expected_status=201

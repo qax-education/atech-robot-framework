@@ -1,11 +1,13 @@
 *** Settings ***
 Documentation            Página de cadastro
 
+Resource       ../env.resource
+
 Library        Browser
 
 *** Keywords ***
 Go to signup
-    Go To           http://localhost:3000/signup
+    Go To          ${BASE_URL}/signup
     Get Text        css=form h1        equal        Faça seu cadastro
 
 Register user
